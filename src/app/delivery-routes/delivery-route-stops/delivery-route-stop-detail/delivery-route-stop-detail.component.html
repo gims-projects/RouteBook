@@ -1,0 +1,71 @@
+<!-- route-stop-detail-navbar -->
+<nav class="navbar navbar-default">
+
+  <!-- route-stop-detail-navbar-header -->
+  <div class="navbar-header">
+
+    <!-- header-link -->
+    <a class="navbar-brand">{{DirectionButtonName}}</a>
+
+    <!-- collapsible-responsive-menu-toggle-button -->
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#routeStopDetail-Navbar">
+      <span class="caret"></span>
+    </button>
+    <!-- collapsible-responsive-menu-toggle-button -->
+
+  </div>
+  <!-- route-stop-detail-navbar-header -->
+
+  <!-- responsive-drop-down-menu -->
+  <div class="collapse navbar-collapse" id="routeStopDetail-Navbar">
+
+    <ul style="cursor: pointer" class="nav navbar-nav">
+
+      <!-- directions-menu-option -->
+      <li routerLinkActive="active">
+        <a (click)="onRouteStopOptionsButtonClicked('Directions')" [routerLink]="['Directions']">Directions</a>
+      </li>
+      <!-- directions-menu-option -->
+
+      <!-- procedures-menu-option -->
+      <li routerLinkActive="active">
+        <a (click)="onRouteStopOptionsButtonClicked('Procedures')" [routerLink]="['Procedures']">Procedures</a>
+      </li>
+      <!-- procedures-menu-option -->
+
+    </ul>
+
+    <!-- Directions Options -->
+    <div *ngIf="DirectionButtonClicked" class="navbar-collapse">
+      <ul style="cursor: pointer" class="nav-pills nav navbar-nav">
+
+        <!-- directions-menu-option -->
+        <li routerLinkActive="active">
+          <a [routerLink]="['Directions/Stop']">Stop</a>
+        </li>
+        <!-- directions-menu-option -->
+
+        <!-- procedures-menu-option -->
+        <li routerLinkActive="active">
+          <a [routerLink]="['Directions/Receiving']">Receiving</a>
+        </li>
+        <!-- procedures-menu-option -->
+
+        <!-- procedures-menu-option -->
+        <li routerLinkActive="active">
+          <a [routerLink]="['Directions/Location']">Location</a>
+        </li>
+        <!-- procedures-menu-option -->
+
+      </ul>
+      <!-- <div class="custom-control custom-radio radio-inline"> -->
+    </div>
+    <!-- Directions Options -->
+
+  </div>
+
+</nav>
+<!-- route-stop-detail-navbar -->
+
+<!-- <p>delivery-route-stop-detail works! {{CurrentDeliveryRouteStopID}}</p> -->
+<router-outlet></router-outlet>

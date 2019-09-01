@@ -1,0 +1,82 @@
+    <div class="container-fluid">
+      <div class="row">
+
+        <!-- route-stop-detail-navbar -->
+        <nav class="navbar navbar-default">
+
+          <!-- route-stop-detail-navbar-header -->
+          <div class="navbar-header">
+
+            <!-- header-link -->
+            <a class="navbar-brand">{{DirectionButtonName}}</a>
+
+            <!-- collapsible-responsive-menu-toggle-button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#routeStopDetail-Navbar">
+              <span class="caret"></span>
+            </button>
+            <!-- collapsible-responsive-menu-toggle-button -->
+
+          </div>
+          <!-- route-stop-detail-navbar-header -->
+
+          <!-- route-stop-detail-navbar-options -->
+          <div class="row">
+
+            <!-- responsive-drop-down-menu -->
+            <div class="collapse navbar-collapse" id="routeStopDetail-Navbar">
+
+              <ul style="cursor: pointer" class="nav navbar-nav">
+
+                <!-- directions-menu-option -->
+                <li routerLinkActive="active">
+                  <a (click)="onRouteStopOptionsButtonClicked('Directions')"
+                    [routerLink]="['Directions']">Directions</a>
+                </li>
+                <!-- directions-menu-option -->
+
+                <!-- procedures-menu-option -->
+                <li routerLinkActive="active">
+                  <a (click)="onRouteStopOptionsButtonClicked('Procedures')"
+                    [routerLink]="['Procedures']">Procedures</a>
+                </li>
+                <!-- procedures-menu-option -->
+
+              </ul>
+            </div>
+
+            <!-- Directions Options -->
+            <div *ngIf="DirectionButtonClicked" class="navbar-collapse radio" style="margin: 1.25em;">
+
+              <!-- <div class="custom-control custom-radio radio-inline"> -->
+              <div >
+                  <input id="location" type="radio" value="location" name="directionType"
+                  ngModel>
+                <label for="location">Location</label>
+              </div>
+
+              <div >
+                <input id="recieving" type="radio" value="recieving" name="directionType"
+                  ngModel>
+                <label for="recieving">Recieving</label>
+              </div>
+
+              <div >
+                <!-- <input id="store" type="radio" class="custom-control-input" value="store" name="directionType" ngModel> -->
+                <input id="store" type="radio" value="store" name="directionType" ngModel>
+                <label for="store">Store</label>
+              </div>
+
+            </div>
+            <!-- Directions Options -->
+
+          </div>
+          <!-- route-stop-detail-navbar-options -->
+
+        </nav>
+        <!-- route-stop-detail-navbar -->
+
+      </div>
+    </div>
+
+    <!-- <p>delivery-route-stop-detail works! {{CurrentDeliveryRouteStopID}}</p> -->
+    <router-outlet></router-outlet>

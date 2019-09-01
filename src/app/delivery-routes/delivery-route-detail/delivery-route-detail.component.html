@@ -1,0 +1,66 @@
+<div class="row">
+  <div class="col-xs-12">
+    <h3 style="height: 75%;">{{CurrentDeliveryRoute.Name}}</h3>
+  </div>
+</div>
+
+<div class="row" style="height: 75%;">
+  <gims-routebook-day-picker (DayOfWeekSelected)="onDayOfWeekSelected($event)"></gims-routebook-day-picker>
+</div>
+
+<div class="row">
+
+  <div class="col-xs-3">
+    <gims-routebook-delivery-route-stops-list [deliveryRouteStops]="RouteStopsFilteredByDayOfWeek">
+    </gims-routebook-delivery-route-stops-list>
+  </div>
+
+  <div *ngIf="RouteStopsFilteredByDayOfWeek.length > 0" class="col-xs-9">
+    <router-outlet></router-outlet>
+  </div>
+
+</div>
+
+
+
+
+<!--
+
+<div class="row">
+  <div class="col-xs-12">
+    <div class="btn-group" gimsDropdown>
+      <button type="button" class="btn btn-primary dropdown-toggle">
+        Actions <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu">
+        <li><a style="cursor: pointer" (click)="onEditDeliveryRoute()">Edit Route</a></li>
+        <li><a style="cursor: pointer">Delete Route</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+ -->
+
+<!--
+
+<div class="row">
+  <div class="col-xs-6">
+    DriverID : {{CurrentDeliveryRoute.DriverID}}
+  </div>
+  <div class="col-xs-6">
+    VehicleID : {{CurrentDeliveryRoute.VehicleID}}
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-6">
+    VehicleID : {{CurrentDeliveryRoute.VehicleID}}
+  </div>
+</div>
+
+ <hr>
+
+ -->

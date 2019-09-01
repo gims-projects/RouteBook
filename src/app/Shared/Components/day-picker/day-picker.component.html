@@ -1,0 +1,43 @@
+  <!--  -->
+  <nav class="navbar  navbar-default">
+
+    <!--  -->
+    <div class="container-fluid">
+
+      <!--  -->
+      <div class="navbar-header">
+        <a class="navbar-brand">{{Title}}</a>
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#Day-Picker-Navbar">
+          <span class="caret"></span>
+        </button>
+      </div>
+      <!--  -->
+
+      <!--  -->
+      <div class="collapse navbar-collapse" id="Day-Picker-Navbar">
+
+        <!--  -->
+        <ul style="cursor: pointer" class="nav navbar-nav">
+
+          <li (click)="onDayOfWeekChanged(1)" [ngClass]="{'active':currentSelectedDay === 1}"><a>Monday</a>
+          </li>
+          <li (click)="onDayOfWeekChanged(2)" [ngClass]="{'active':currentSelectedDay === 2}"><a>Tuesday</a>
+          </li>
+          <li (click)="onDayOfWeekChanged(3)" [ngClass]="{'active':currentSelectedDay === 3}"><a>Wednesday</a>
+          </li>
+          <li (click)="onDayOfWeekChanged(4)" [ngClass]="{'active':currentSelectedDay === 4}"><a>Thursday</a>
+          </li>
+          <li (click)="onDayOfWeekChanged(5)" [ngClass]="{'active':currentSelectedDay === 5}"><a>Friday</a>
+          </li>
+          <li (click)="onDayOfWeekChanged(6)" [ngClass]="{'active':currentSelectedDay === 6}"><a>Saturday</a>
+          </li>
+
+        </ul>
+        <!--  -->
+
+      </div>
+      <!--  -->
+    </div>
+    <!--  -->
+
+  </nav>
