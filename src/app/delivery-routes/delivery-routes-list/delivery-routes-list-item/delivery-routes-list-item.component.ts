@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { DeliveryRouteModel } from '../../Models/delivery-route.model';
+import { DeliveryRouteModel } from '../../models/delivery-route.model';
 
 @Component({
   selector: 'gims-routebook-delivery-routes-list-item',
@@ -10,7 +10,6 @@ import { DeliveryRouteModel } from '../../Models/delivery-route.model';
 export class DeliveryRoutesListItemComponent implements OnInit {
 
   @Input() deliveryRoute: DeliveryRouteModel;
-  @Input() deliveryRouteID: string; //TODO: Why do I need this when I have the deliveryRoute object?
 
   ngOnInit() {
   }

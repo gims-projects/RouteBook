@@ -1,0 +1,24 @@
+<a *ngIf="!showDetail" routerLinkActive="active" style="cursor: pointer;" class="list-group-item clearfix">
+
+  <div class="pull-left">
+    <h4 class="list-group-item-heading">Name : {{CurrentTask.Name}}</h4>
+  </div>
+  <span class="pull-right">
+    <button *ngIf="CurrentTask.UrlToHTMLFile" class="btn btn-primary" (click)="ToggleDetail()">Procedure</button>
+  </span>
+</a>
+
+<div *ngIf="showDetail">
+  <div class="pull-right">
+    <button class="btn btn-primary" (click)="ToggleDetail()" style="margin-top: 1em; margin-right: 1em">Task</button>
+  </div>
+
+  <div class="row">
+    <div class=" col-xs-12">
+      <hr>
+      <iframe [src]="sanitizer.bypassSecurityTrustResourceUrl(CurrentTask.UrlToHTMLFile)" width="100%" height="300px"
+        frameborder="0" style="border:0;" allowfullscreen="true"></iframe>
+    </div>
+  </div>
+
+</div>

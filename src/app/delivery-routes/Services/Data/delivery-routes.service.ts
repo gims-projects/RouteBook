@@ -1,13 +1,15 @@
-import { EventEmitter, Injectable } from '@angular/core';
-import { DeliveryRouteModel } from '../../Models/delivery-route.model';
-import { DeliveryRouteStopModel } from '../../Models/delivery-route-stop.model';
+// import { EventEmitter, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
+
+import { DeliveryRouteModel } from '../../models/delivery-route.model';
+import { DeliveryRouteStopModel } from '../../models/delivery-route-stop.model';
 import { DeliveryRouteStopsService } from './delivery-route-stops.service';
 
 
 @Injectable()
 export class DeliveryRoutesService {
 
-  public DeliveryRouteSelected = new EventEmitter<DeliveryRouteModel>();
+  // public DeliveryRouteSelected = new EventEmitter<DeliveryRouteModel>();
 
   private deliveryRoutes: DeliveryRouteModel[];
 

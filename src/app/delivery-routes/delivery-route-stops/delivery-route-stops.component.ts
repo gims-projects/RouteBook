@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DeliveryRouteStopModel } from '../Models/delivery-route-stop.model';
+import { DeliveryRouteStopModel } from '../models/delivery-route-stop.model';
+
 
 @Component({
   selector: 'gims-routebook-delivery-route-stops',

@@ -10,11 +10,11 @@ import {
 
 import {
   DeliveryRouteStopModel
-} from '../../Models/delivery-route-stop.model';
+} from '../../models/delivery-route-stop.model';
 
 import {
   DeliveryRouteStopsService
-} from '../../Services/Data/delivery-route-stops.service';
+} from '../../services/data/delivery-route-stops.service';
 
 @Component({
   selector: 'gims-routebook-delivery-route-stop-detail',
@@ -34,10 +34,10 @@ export class DeliveryRouteStopDetailComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(
       (params: Params) => {
-        this.CurrentDeliveryRouteStopID = params.stopID.toUpperCase();
-        this.CurrentDeliveryRouteStop = this.deliveryRouteService.GetByID(this.CurrentDeliveryRouteStopID);
-        this.DirectionButtonClicked = true;
-        this.DirectionButtonName = 'Directions';
+        // this.CurrentDeliveryRouteStopID = params.stopID.toUpperCase();
+        this.CurrentDeliveryRouteStop = this.deliveryRouteService.GetByID(params.stopID);
+        this.DirectionButtonClicked = false;
+        this.DirectionButtonName = 'Tasks';
       }
     );
   }

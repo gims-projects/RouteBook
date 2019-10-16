@@ -2,6 +2,7 @@ import {
   Component,
   OnInit
 } from '@angular/core';
+
 import {
   Router,
   ActivatedRoute,
@@ -10,14 +11,22 @@ import {
 
 import {
   DeliveryRouteModel
-} from 'src/app/delivery-routes/Models/delivery-route.model';
+} from '../../delivery-routes/models/delivery-route.model';
+
 import {
   DeliveryRouteStopModel
-} from '../Models/delivery-route-stop.model';
-import {
-  DeliveryRoutesService
-} from 'src/app/delivery-routes/Services/Data/delivery-routes.service';
+} from '../../delivery-routes/models/delivery-route-stop.model';
 
+import {
+  DeliveryRoutesViewService
+} from '../../delivery-routes/services/view/delivery-routes-view.service';
+
+/**
+ * The Delivery Route Detail Component displays detail information about the Current Delivery Route.
+ * The name of the Current Delivery Route is displayed across the top of the form while on the next
+ * row the Delivery Route Stops List is displayed on the left with a <router-outlet> on the right to
+ * display detail information about the Current Delivery Route Stop.
+ */
 @Component({
   selector: 'gims-routebook-delivery-route-detail',
   templateUrl: './delivery-route-detail.component.html',
@@ -25,25 +34,38 @@ import {
 })
 export class DeliveryRouteDetailComponent implements OnInit {
 
-  CurrentDeliveryRoute: DeliveryRouteModel;
-  CurrentDeliveryRouteID: string;
-  CurrentSelectedDay: number;
-  RouteStopsFilteredByDayOfWeek: DeliveryRouteStopModel[];
-
-  constructor(private deliveryRouteService: DeliveryRoutesService,
+  constructor(private viewService: DeliveryRoutesViewService,
               private router: Router,
               private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.route.params.subscribe(
       (params: Params) => {
-        this.CurrentDeliveryRouteID = params.routeID;
-        this.CurrentDeliveryRoute = this.deliveryRouteService.GetByID(this.CurrentDeliveryRouteID);
-        this.CurrentDeliveryRoute.Stops = this.deliveryRouteService.GetDeliveryRouteStops(this.CurrentDeliveryRouteID);
+        this.viewService.LoadCurrentRoute(params.routeID);
         this.RouteStopsFilteredByDayOfWeek = this.filterStopsByDayOfWeekID();
       }
     );
+  }
 
+  public get CurrentDeliveryRoute(): DeliveryRouteModel {
+    return this.viewService.CurrentDeliveryRoute;
+  }
+  public set CurrentDeliveryRoute(value: DeliveryRouteModel) {
+    this.viewService.CurrentDeliveryRoute = value;
+  }
+
+  public get CurrentSelectedDay(): number {
+    return this.viewService.CurrentSelectedDay;
+  }
+  public set CurrentSelectedDay(value: number) {
+    this.viewService.CurrentSelectedDay = value;
+  }
+
+  public get RouteStopsFilteredByDayOfWeek(): DeliveryRouteStopModel[] {
+    return this.viewService.RouteStopsFilteredByDayOfWeek;
+  }
+  public set RouteStopsFilteredByDayOfWeek(value: DeliveryRouteStopModel[]) {
+    this.viewService.RouteStopsFilteredByDayOfWeek = value;
   }
 
   onDayOfWeekSelected(dayOfWeekID: number) {
@@ -51,11 +73,13 @@ export class DeliveryRouteDetailComponent implements OnInit {
     this.RouteStopsFilteredByDayOfWeek = this.filterStopsByDayOfWeekID();
   }
 
+  onNewDeliveryRoute() {
+    this.router.navigate(['../new'], { relativeTo: this.route });
+   }
+
   onEditDeliveryRoute() {
 
-    this.router.navigate(['edit'], {
-      relativeTo: this.route
-    });
+    this.router.navigate(['/routes/edit/' + this.CurrentDeliveryRoute.ID]);
 
     // This example is equivalent to the above simpler expression but shows how to build complex routes
     //   for navigaiton.
@@ -64,7 +88,9 @@ export class DeliveryRouteDetailComponent implements OnInit {
   }
 
   filterStopsByDayOfWeekID(): DeliveryRouteStopModel[] {
-    return this.CurrentDeliveryRoute.Stops.filter(stop => stop.StartDayID === this.CurrentSelectedDay).slice();
+    const currentSelectedDayID = this.CurrentSelectedDay;
+    const x = this.CurrentDeliveryRoute.Stops.filter(stop => stop.StartDayID === currentSelectedDayID).slice();
+    return x;
   }
 
 }

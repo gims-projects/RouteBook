@@ -1,0 +1,31 @@
+<a *ngIf="!showDetail" routerLinkActive="active" style="cursor: pointer;" class="list-group-item clearfix">
+
+  <div class="pull-right">
+    <button class="btn btn-primary" (click)="ToggleDetail()">Detail</button>
+  </div>
+
+  <div class="pull-left">
+    <h4 class="list-group-item-heading">Title : {{CurrentProcedure.Title}}</h4>
+    <p class="list-group-item-text">Summary : {{CurrentProcedure.Summary}}</p>
+    <!--     <hr>
+    <p class="list-group-item-text">ID : {{CurrentProcedure.ID}}</p>
+    <p class="list-group-item-text">Stop ID : {{CurrentProcedure.StopID}}</p>
+    <p class="list-group-item-text">Parent ID : {{CurrentProcedure.ParentID}}</p>
+    <p class="list-group-item-text">Sort Order : {{CurrentProcedure.SortOrder}}</p>
+    <p class="list-group-item-text">Url to HTML File : {{CurrentProcedure.UrlToHTMLFile}}</p>
+ -->
+  </div>
+</a>
+
+<div *ngIf="showDetail">
+  <div class="pull-right">
+    <button class="btn btn-primary" (click)="ToggleDetail()" style="margin-top: 1em; margin-right: 1em">Summary</button>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <hr>
+      <iframe [src]="sanitizer.bypassSecurityTrustResourceUrl(CurrentProcedure.UrlToHTMLFile)" width="100%"
+        height="300px" frameborder="0" style="border:0;" allowfullscreen="true"></iframe>
+    </div>
+  </div>
+</div>

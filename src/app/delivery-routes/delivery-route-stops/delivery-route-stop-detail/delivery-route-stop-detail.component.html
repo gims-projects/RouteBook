@@ -21,6 +21,12 @@
 
     <ul style="cursor: pointer" class="nav navbar-nav">
 
+      <!-- tasks-menu-option -->
+      <li routerLinkActive="active">
+        <a (click)="onRouteStopOptionsButtonClicked('Tasks')" [routerLink]="['Tasks']">Tasks</a>
+      </li>
+      <!-- tasks-menu-option -->
+
       <!-- directions-menu-option -->
       <li routerLinkActive="active">
         <a (click)="onRouteStopOptionsButtonClicked('Directions')" [routerLink]="['Directions']">Directions</a>
@@ -58,7 +64,6 @@
         <!-- procedures-menu-option -->
 
       </ul>
-      <!-- <div class="custom-control custom-radio radio-inline"> -->
     </div>
     <!-- Directions Options -->
 
@@ -67,5 +72,4 @@
 </nav>
 <!-- route-stop-detail-navbar -->
 
-<!-- <p>delivery-route-stop-detail works! {{CurrentDeliveryRouteStopID}}</p> -->
 <router-outlet></router-outlet>

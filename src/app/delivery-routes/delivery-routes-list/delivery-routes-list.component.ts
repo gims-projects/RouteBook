@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
 
-import { DeliveryRouteModel } from '../Models/delivery-route.model';
-// import { DeliveryRoutesService } from 'src/app/delivery-routes/Services/Data/delivery-routes.service';
-import { DeliveryRoutesViewService } from '../Services/view/delivery-routes-view.service'
+import { DeliveryRouteModel } from '../models/delivery-route.model';
+import { DeliveryRoutesViewService } from '../services/view/delivery-routes-view.service';
 
 @Component({
   selector: 'gims-routebook-delivery-routes-list',
@@ -14,18 +12,13 @@ export class DeliveryRoutesListComponent implements OnInit {
 
   deliveryRoutes: DeliveryRouteModel[];
 
-  constructor(private deliveryRoutesService: DeliveryRoutesViewService,
-              private router: Router,
-              private route: ActivatedRoute) {}
+  constructor(private viewService: DeliveryRoutesViewService) {}
 
   ngOnInit() {
+    this.deliveryRoutes = this.viewService.DeliveryRoutes;
+  }
 
-    // this.deliveryRoutes = this.deliveryRoutesService.DeliveryRoutesData;
-
+ onRouteSelected(currentDeliveryRoute: DeliveryRouteModel) {
+  this.viewService.CurrentDeliveryRoute = currentDeliveryRoute;
  }
-
- onNewDeliveryRoute(){
-  this.router.navigate(['new'],{relativeTo: this.route})
- }
-
 }

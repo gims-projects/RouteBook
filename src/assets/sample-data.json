@@ -1,0 +1,22 @@
+{
+  "name": "Route-Book-Sample-Data",
+  "deliveryRoutes": [
+    {"ID": "ROUTE-00", "Name": "Route # 00", "DriverID": "DRIVER-00", "VehicleID": "VEHICLE-00" }
+  ],
+
+  "deliveryRouteStops": [
+    {"RecordType": "DeliveryRouteStopsModel"}
+  ],
+
+  "deliveryRouteStopDirections": [
+    {"RecordType": "DeliveryRouteStopDirections"}
+  ],
+
+  "deliveryRouteStopProcedures": [
+    {"RecordType": "DeliveryRouteStopProcedures"}
+  ],
+
+  "deliveryRouteStopTasks": [
+    {"RecordType": "DeliveryRouteStopTasks"}
+  ]
+}

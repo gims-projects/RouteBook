@@ -9,8 +9,9 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class MapViewerComponent implements OnInit {
 
   @Input() public EmbeddedMapUrl: string;
+  @Input() public srcdoc: string;
 
-  constructor(private sanitizer: DomSanitizer) { }
+  constructor(public sanitizer: DomSanitizer) { }
 
   ngOnInit() {
   }

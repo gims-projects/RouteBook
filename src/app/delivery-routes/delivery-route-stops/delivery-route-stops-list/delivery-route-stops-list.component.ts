@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { DeliveryRouteStopModel } from '../../Models/delivery-route-stop.model';
+import { DeliveryRouteStopModel } from '../../models/delivery-route-stop.model';
+import { DeliveryRoutesViewService } from '../../services/view/delivery-routes-view.service';
 
 @Component({
   selector: 'gims-routebook-delivery-route-stops-list',
@@ -9,10 +10,16 @@ import { DeliveryRouteStopModel } from '../../Models/delivery-route-stop.model';
 })
 export class DeliveryRouteStopsListComponent implements OnInit {
 
-  constructor() {}
+  constructor(private viewService: DeliveryRoutesViewService) {}
 
   @Input() deliveryRouteStops: DeliveryRouteStopModel[];
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.deliveryRouteStops = this.viewService.RouteStopsFilteredByDayOfWeek;
+  }
+
+  RouteStopSelected(): void {
+
+  }
 
 }

@@ -9,7 +9,6 @@ export class VehiclesComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {  }
 
 }

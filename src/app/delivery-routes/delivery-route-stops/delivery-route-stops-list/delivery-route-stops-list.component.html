@@ -1,6 +1,6 @@
 <div class="row" *ngFor="let currentDeliveryRouteStop of deliveryRouteStops">
   <div>
-    <gims-routebook-delivery-route-stops-list-item [deliveryRouteStop]="currentDeliveryRouteStop">
+    <gims-routebook-delivery-route-stops-list-item (click)="RouteStopSelected()" [deliveryRouteStop]="currentDeliveryRouteStop">
     </gims-routebook-delivery-route-stops-list-item>
   </div>
 </div>
